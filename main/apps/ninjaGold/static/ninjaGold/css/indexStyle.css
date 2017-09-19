@@ -1,0 +1,24 @@
+#score{
+    border: solid thin black;
+    display: inline-block;
+    width: 10%;
+    padding: 0.5%;
+}
+
+.locations{
+    display: inline-block;
+    vertical-align: top;
+    width: 20%;
+    padding: 1%;
+    margin: 1%;
+    border: solid thin black;
+}
+
+#activities{
+    width: 97%;
+    display: inline-block;
+    margin: 1%;
+    overflow-y: scroll;
+    border: solid thin black;
+    height: 6em;
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ninja Gold 2: The Return</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'ninjaGold/css/indexStyle.css' %}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- <script src="{% static 'ninjaGold/js/ninjaGold.js'%}"></script> -->
+    </head>
+    <body>
+        <div id="topBar">
+            <div id="gold">
+                <h4>Your Gold:</h4> <div id="score">{{ request.session.money }}</div>
+            </div>
+        </div>
+        <div class="locations">
+            <h2>Farm</h2>
+            <h3>(earn 10-20 gold)</h3>
+            <br>
+            <form action="/process" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="building" value="Farm">
+                <input type="submit" name="Find Gold">
+            </form>
+        </div>
+        <div class="locations">
+            <h2>Cave</h2>
+            <h3>(earn 5-10 gold)</h3>
+            <br>
+            <form action="/process" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="building" value="Cave">
+                <input type="submit" value="Find Gold">
+            </form>
+        </div>
+        <div class="locations">
+            <h2>House</h2>
+            <h3>(earn 2-5 gold)</h3>
+            <br>
+            <form action="/process" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="building" value="House">
+                <input type="submit" value="Find Gold">
+            </form>
+        </div>
+        <div class="locations">
+            <h2>Casino</h2>
+            <h3>(earn or lose 0-50 gold)</h3>
+            <br>
+            <form action="/process" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="building" value="Casino">
+                <input type="submit" value="Find Gold">
+            </form>
+        </div>
+        <div id="activities">
+
+        </div>
+    </body>
+</html>
