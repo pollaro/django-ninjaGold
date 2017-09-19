@@ -55,7 +55,9 @@
             </form>
         </div>
         <div id="activities">
-
+            {% for x in request.session.store %}
+                <span class={{x.col}}>Earned {{x.c}} from the {{x.b}}. ({{x.t}})</span><br>
+            {% endfor %}
         </div>
     </body>
 </html>

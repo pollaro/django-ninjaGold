@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 import random
+from datetime import datetime
 
 def index(request):
-    print 'index'
     if 'money' not in request.session:
         request.session['money'] = 0
         request.session['cash'] = 0
@@ -12,7 +12,6 @@ def index(request):
     return render(request,'ninjaGold/index.html')
 
 def process(request):
-    print 'process'
     rand = random.random()
     print request.POST['building']
     if request.POST['building'] == 'Farm':
@@ -31,7 +30,13 @@ def process(request):
         else:
             request.session['color'] = 'Green'
         request.session['location'] = 'Casino'
+    time = datetime.now().strftime('%-I:%M %p %b %-d %Y')
     request.session['money'] += cash
     request.session['money'] = int(request.session['money'])
     request.session['cash'] = int(cash)
+    dataout = {'c':request.session['cash'],'t':time,'b':request.session['location'],'col':request.session['color']}
+    if not 'store' in request.session:
+        request.session['store'] = [dataout]
+    else:
+        request.session['store'].append(dataout)
     return redirect('/')
